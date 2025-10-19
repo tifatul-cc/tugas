@@ -14,7 +14,7 @@
       <a href="#home">Home</a>
       <a href="#menu">Menu</a>
       <a href="#order">Pemesanan</a>
-      <a href="#contact">Kontak</a>
+      <a href="#addMenu">Tambah Menu</a>
     </nav>
   </header>
 
@@ -30,7 +30,7 @@
   <!-- Menu Section -->
   <section id="menu" class="menu">
     <h2>Our Specialty</h2>
-    <div class="menu-container">
+    <div id="menuList" class="menu-container">
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Espresso Coffee">
         <h3>Espresso Coffee</h3>
@@ -68,33 +68,73 @@
     </form>
   </section>
 
+  <!-- Add Menu Section -->
+  <section id="addMenu" class="add-menu">
+    <h2>Tambah Menu Baru</h2>
+    <form id="addMenuForm">
+      <input id="menuName" type="text" placeholder="Nama Menu" required>
+      <input id="menuDesc" type="text" placeholder="Deskripsi Menu" required>
+      <input id="menuPrice" type="number" placeholder="Harga (Rp)" required>
+      <input id="menuImage" type="text" placeholder="Link Gambar (URL)" required>
+      <button type="submit" class="btn">Tambah Menu</button>
+    </form>
+  </section>
+
   <footer>
     <p>© 2025 Coffee Shop. Dibuat dengan ❤️ oleh Tifatul Ma'arif</p>
   </footer>
 
-  <!-- ✅ SCRIPT WHATSAPP -->
+  <!-- ✅ SCRIPT -->
   <script>
+    const no_wa = "6281249226332"; // Nomor WhatsApp untuk laporan
+
     // Fungsi agar tombol "Pesan" otomatis mengisi form menu
     function pilihMenu(menu) {
       document.getElementById("menu").value = menu;
       window.location.href = "#order"; // scroll ke form
     }
 
-    // Kirim pesan via WhatsApp
+    // Kirim pesanan ke WhatsApp
     document.getElementById("orderForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
       const nama = document.getElementById("nama").value;
       const menu = document.getElementById("menu").value;
       const jumlah = document.getElementById("jumlah").value;
-      
-      // Ganti nomor WA di sini (format: 62 + nomor tanpa 0)
-      const no_wa = "6281249226332"; 
 
-      const pesan = `Halo Coffee Shop! 👋%0ASaya ingin memesan:%0A- Nama: ${nama}%0A- Menu: ${menu}%0A- Jumlah: ${jumlah}%0A%0ATerima kasih ☕`;
+      const pesan = `📦 *PESANAN BARU!*%0A%0A👤 Nama: ${nama}%0A☕ Menu: ${menu}%0A🔢 Jumlah: ${jumlah}%0A%0A📅 ${new Date().toLocaleString()}%0A%0A🧾 Terima kasih sudah memesan di Coffee Shop!`;
       const url = `https://wa.me/${no_wa}?text=${pesan}`;
-
       window.open(url, "_blank");
+    });
+
+    // Tambahkan menu baru secara dinamis
+    document.getElementById("addMenuForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("menuName").value;
+      const desc = document.getElementById("menuDesc").value;
+      const price = document.getElementById("menuPrice").value;
+      const img = document.getElementById("menuImage").value;
+
+      const container = document.getElementById("menuList");
+
+      const card = document.createElement("div");
+      card.classList.add("menu-item");
+      card.innerHTML = `
+        <img src="${img}" alt="${name}">
+        <h3>${name}</h3>
+        <p>${desc}</p>
+        <span class="price">Rp ${price}</span>
+        <button class="btn-order" onclick="pilihMenu('${name}')">Pesan</button>
+      `;
+      container.appendChild(card);
+
+      // Kirim laporan menu baru via WhatsApp
+      const laporan = `📢 *MENU BARU DITAMBAHKAN!*%0A🍽 Nama: ${name}%0A💬 Deskripsi: ${desc}%0A💰 Harga: Rp${price}%0A🖼 Gambar: ${img}%0A📅 ${new Date().toLocaleString()}`;
+      const url = `https://wa.me/${no_wa}?text=${laporan}`;
+      window.open(url, "_blank");
+
+      this.reset();
+      alert("Menu baru berhasil ditambahkan!");
     });
   </script>
 </body>
