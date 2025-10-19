@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coffee Shop</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
   <!-- Navbar -->
@@ -37,7 +36,7 @@
         <h3>Espresso Coffee</h3>
         <p>Kopi hitam pekat dengan aroma kuat dan rasa khas Italia.</p>
         <span class="price">Rp 25.000</span>
-        <button class="btn-order" onclick="orderNow('Espresso Coffee')">Pesan</button>
+        <button class="btn-order" onclick="pilihMenu('Espresso Coffee')">Pesan</button>
       </div>
 
       <div class="menu-item">
@@ -45,15 +44,15 @@
         <h3>Americano Coffee</h3>
         <p>Campuran espresso dan air panas dengan cita rasa ringan.</p>
         <span class="price">Rp 28.000</span>
-        <button class="btn-order" onclick="orderNow('Americano Coffee')">Pesan</button>
+        <button class="btn-order" onclick="pilihMenu('Americano Coffee')">Pesan</button>
       </div>
 
       <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Cappuccino Coffee">
+        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03" alt="Cappuccino Coffee">
         <h3>Cappuccino Coffee</h3>
         <p>Perpaduan sempurna espresso, susu panas, dan buih lembut.</p>
         <span class="price">Rp 30.000</span>
-        <button class="btn-order" onclick="orderNow('Cappuccino Coffee')">Pesan</button>
+        <button class="btn-order" onclick="pilihMenu('Cappuccino Coffee')">Pesan</button>
       </div>
     </div>
   </section>
@@ -62,15 +61,41 @@
   <section id="order" class="order">
     <h2>Form Pemesanan</h2>
     <form id="orderForm">
-      <input type="text" placeholder="Nama Anda" required>
-      <input type="text" placeholder="Menu yang dipesan" required>
-      <input type="number" placeholder="Jumlah" min="1" required>
-      <button type="submit" class="btn">Kirim Pesanan</button>
+      <input id="nama" type="text" placeholder="Nama Anda" required>
+      <input id="menu" type="text" placeholder="Menu yang dipesan" required>
+      <input id="jumlah" type="number" placeholder="Jumlah" min="1" required>
+      <button type="submit" class="btn">Kirim Pesanan via WhatsApp</button>
     </form>
   </section>
 
   <footer>
     <p>© 2025 Coffee Shop. Dibuat dengan ❤️ oleh Tifatul Ma'arif</p>
   </footer>
+
+  <!-- ✅ SCRIPT WHATSAPP -->
+  <script>
+    // Fungsi agar tombol "Pesan" otomatis mengisi form menu
+    function pilihMenu(menu) {
+      document.getElementById("menu").value = menu;
+      window.location.href = "#order"; // scroll ke form
+    }
+
+    // Kirim pesan via WhatsApp
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nama = document.getElementById("nama").value;
+      const menu = document.getElementById("menu").value;
+      const jumlah = document.getElementById("jumlah").value;
+      
+      // Ganti nomor WA di sini (format: 62 + nomor tanpa 0)
+      const no_wa = "6281249226332"; 
+
+      const pesan = `Halo Coffee Shop! 👋%0ASaya ingin memesan:%0A- Nama: ${nama}%0A- Menu: ${menu}%0A- Jumlah: ${jumlah}%0A%0ATerima kasih ☕`;
+      const url = `https://wa.me/${no_wa}?text=${pesan}`;
+
+      window.open(url, "_blank");
+    });
+  </script>
 </body>
 </html>
