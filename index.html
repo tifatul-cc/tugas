@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Shop</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">☕ Coffee Shop</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#order">Pemesanan</a>
+      <a href="#contact">Kontak</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h1>Great Coffee For Some Joy</h1>
+      <p>Rasakan kenikmatan kopi terbaik dari biji pilihan dan racikan barista profesional.</p>
+      <a href="#menu" class="btn">Lihat Menu</a>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu">
+    <h2>Our Specialty</h2>
+    <div class="menu-container">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Espresso Coffee">
+        <h3>Espresso Coffee</h3>
+        <p>Kopi hitam pekat dengan aroma kuat dan rasa khas Italia.</p>
+        <span class="price">Rp 25.000</span>
+        <button class="btn-order" onclick="orderNow('Espresso Coffee')">Pesan</button>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187" alt="Americano Coffee">
+        <h3>Americano Coffee</h3>
+        <p>Campuran espresso dan air panas dengan cita rasa ringan.</p>
+        <span class="price">Rp 28.000</span>
+        <button class="btn-order" onclick="orderNow('Americano Coffee')">Pesan</button>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Cappuccino Coffee">
+        <h3>Cappuccino Coffee</h3>
+        <p>Perpaduan sempurna espresso, susu panas, dan buih lembut.</p>
+        <span class="price">Rp 30.000</span>
+        <button class="btn-order" onclick="orderNow('Cappuccino Coffee')">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Section -->
+  <section id="order" class="order">
+    <h2>Form Pemesanan</h2>
+    <form id="orderForm">
+      <input type="text" placeholder="Nama Anda" required>
+      <input type="text" placeholder="Menu yang dipesan" required>
+      <input type="number" placeholder="Jumlah" min="1" required>
+      <button type="submit" class="btn">Kirim Pesanan</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Coffee Shop. Dibuat dengan ❤️ oleh Tifatul Ma'arif</p>
+  </footer>
+</body>
+</html>
