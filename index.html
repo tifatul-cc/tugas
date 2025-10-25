@@ -4,7 +4,221 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coffee Shop</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---------- GAYA UTAMA ---------- */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #faf5e4;
+      color: #3b2f2f;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1dca7;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      margin-left: 20px;
+      color: #3b2f2f;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #a87f55;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      height: 80vh;
+      background: url("https://images.unsplash.com/photo-1509042239860-f550ce710b93") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 15px 0;
+    }
+
+    .btn {
+      background-color: #c89b6e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #a87f55;
+    }
+
+    /* ---------- MENU SECTION ---------- */
+    .menu {
+      padding: 60px 20px;
+      text-align: center;
+      background: #fff8ee;
+    }
+
+    .menu h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .menu-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: #fff;
+      border-radius: 15px;
+      padding: 15px;
+      width: 260px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .price {
+      display: block;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #a87f55;
+    }
+
+    /* ---------- ORDER FORM ---------- */
+    .order {
+      padding: 60px 20px;
+      background: #f9f3e5;
+      text-align: center;
+    }
+
+    .order h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    #orderForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    #orderForm input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      background: #3b2f2f;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    /* ---------- POPUP UCAPAN ---------- */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: #f9f3e5;
+      color: #3b2f2f;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 400px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .popup-content img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .popup-content h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .popup-content p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .popup-content button {
+      background: #c89b6e;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .popup-content button:hover {
+      background: #a87f55;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.8);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -14,17 +228,14 @@
       <a href="#home">Home</a>
       <a href="#menu">Menu</a>
       <a href="#order">Pemesanan</a>
-      <a href="#addMenu">Tambah Menu</a>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-text">
-      <h1>Great Coffee For Some Joy</h1>
-      <p>Rasakan kenikmatan kopi terbaik dari biji pilihan dan racikan barista profesional.</p>
-      <a href="#menu" class="btn">Lihat Menu</a>
-    </div>
+    <h1>Great Coffee For Some Joy</h1>
+    <p>Rasakan kenikmatan kopi terbaik dari biji pilihan dan racikan barista profesional.</p>
+    <a href="#menu" class="btn">Lihat Menu</a>
   </section>
 
   <!-- Menu Section -->
@@ -36,7 +247,7 @@
         <h3>Espresso Coffee</h3>
         <p>Kopi hitam pekat dengan aroma kuat dan rasa khas Italia.</p>
         <span class="price">Rp 25.000</span>
-        <button class="btn-order" onclick="pilihMenu('Espresso Coffee')">Pesan</button>
+        <button class="btn-order btn" onclick="pilihMenu('Espresso Coffee')">Pesan</button>
       </div>
 
       <div class="menu-item">
@@ -44,7 +255,7 @@
         <h3>Americano Coffee</h3>
         <p>Campuran espresso dan air panas dengan cita rasa ringan.</p>
         <span class="price">Rp 28.000</span>
-        <button class="btn-order" onclick="pilihMenu('Americano Coffee')">Pesan</button>
+        <button class="btn-order btn" onclick="pilihMenu('Americano Coffee')">Pesan</button>
       </div>
 
       <div class="menu-item">
@@ -52,7 +263,7 @@
         <h3>Cappuccino Coffee</h3>
         <p>Perpaduan sempurna espresso, susu panas, dan buih lembut.</p>
         <span class="price">Rp 30.000</span>
-        <button class="btn-order" onclick="pilihMenu('Cappuccino Coffee')">Pesan</button>
+        <button class="btn-order btn" onclick="pilihMenu('Cappuccino Coffee')">Pesan</button>
       </div>
     </div>
   </section>
@@ -68,33 +279,37 @@
     </form>
   </section>
 
-  <!-- Add Menu Section -->
-  <section id="addMenu" class="add-menu">
-    <h2>Tambah Menu Baru</h2>
-    <form id="addMenuForm">
-      <input id="menuName" type="text" placeholder="Nama Menu" required>
-      <input id="menuDesc" type="text" placeholder="Deskripsi Menu" required>
-      <input id="menuPrice" type="number" placeholder="Harga (Rp)" required>
-      <input id="menuImage" type="text" placeholder="Link Gambar (URL)" required>
-      <button type="submit" class="btn">Tambah Menu</button>
-    </form>
-  </section>
-
   <footer>
     <p>© 2025 Coffee Shop. Dibuat dengan ❤️ oleh Tifatul Ma'arif</p>
   </footer>
 
-  <!-- ✅ SCRIPT -->
-  <script>
-    const no_wa = "6281249226332"; // Nomor WhatsApp untuk laporan
+  <!-- Popup Ucapan -->
+  <div id="thankYouPopup" class="popup">
+    <div class="popup-content">
+      <img src="https://i.pinimg.com/originals/0a/b1/6b/0ab16b5f9945d869db272b573fe6b510.jpg" alt="Thank You Coffee" />
+      <h2>☕ Terima kasih telah berbelanja di toko kami!</h2>
+      <p>Selamat menikmati kopi pilihan Anda. Sampai jumpa di Coffee Shop kami lagi!</p>
+      <button onclick="closePopup()">Tutup</button>
+    </div>
+  </div>
 
-    // Fungsi agar tombol "Pesan" otomatis mengisi form menu
+  <!-- SCRIPT -->
+  <script>
+    const no_wa = "6281249226332"; // Nomor WhatsApp
+
     function pilihMenu(menu) {
       document.getElementById("menu").value = menu;
-      window.location.href = "#order"; // scroll ke form
+      window.location.href = "#order";
     }
 
-    // Kirim pesanan ke WhatsApp
+    function showPopup() {
+      document.getElementById("thankYouPopup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("thankYouPopup").style.display = "none";
+    }
+
     document.getElementById("orderForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const nama = document.getElementById("nama").value;
@@ -104,37 +319,8 @@
       const pesan = `📦 *PESANAN BARU!*%0A%0A👤 Nama: ${nama}%0A☕ Menu: ${menu}%0A🔢 Jumlah: ${jumlah}%0A%0A📅 ${new Date().toLocaleString()}%0A%0A🧾 Terima kasih sudah memesan di Coffee Shop!`;
       const url = `https://wa.me/${no_wa}?text=${pesan}`;
       window.open(url, "_blank");
-    });
 
-    // Tambahkan menu baru secara dinamis
-    document.getElementById("addMenuForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById("menuName").value;
-      const desc = document.getElementById("menuDesc").value;
-      const price = document.getElementById("menuPrice").value;
-      const img = document.getElementById("menuImage").value;
-
-      const container = document.getElementById("menuList");
-
-      const card = document.createElement("div");
-      card.classList.add("menu-item");
-      card.innerHTML = `
-        <img src="${img}" alt="${name}">
-        <h3>${name}</h3>
-        <p>${desc}</p>
-        <span class="price">Rp ${price}</span>
-        <button class="btn-order" onclick="pilihMenu('${name}')">Pesan</button>
-      `;
-      container.appendChild(card);
-
-      // Kirim laporan menu baru via WhatsApp
-      const laporan = `📢 *MENU BARU DITAMBAHKAN!*%0A🍽 Nama: ${name}%0A💬 Deskripsi: ${desc}%0A💰 Harga: Rp${price}%0A🖼 Gambar: ${img}%0A📅 ${new Date().toLocaleString()}`;
-      const url = `https://wa.me/${no_wa}?text=${laporan}`;
-      window.open(url, "_blank");
-
-      this.reset();
-      alert("Menu baru berhasil ditambahkan!");
+      showPopup(); // munculkan ucapan terima kasih
     });
   </script>
 </body>
