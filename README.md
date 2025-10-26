@@ -2,7 +2,9 @@
 
 Haiii! 👋  
 Ini adalah website **Toko Kopi Sederhana** yang saya buat menggunakan **HTML, CSS, dan JavaScript**.  
-Projek ini saya buat sebagai latihan / tugas agar lebih paham dasar-dasar web.
+Projek ini saya buat untuk pengumpulan tugas dari TIKP dinas pendidikan jawatimur dan saya terinspirasi membuat web ini dari
+banyaknya warung kopi di kota saya, dan harapan saya ke depannya dari web ini agar memudahkan pemesanan kopi untuk menemani kerja lembur anda.
+
 
 ## 🧩 Fitur
 - Tampilan utama dengan menu kopi dan harga.  
