@@ -21,7 +21,8 @@ Kamu bisa langsung buka websitenya di sini:
 👉 [https://tifatul-cc.github.io/tugas/](https://tifatul-cc.github.io/tugas/)
 
 ## 📦 Tujuan
-Buat latihan bikin web toko online sederhana dan belajar dasar frontend.
+  Pengumpulan tugas pelatihan TIKP dinas pendidikan jawa timur 
+  dan pembelajaran pembuatan web dasar-dasar HTML,CSS DAN JavaScript.
 
 ---
 
