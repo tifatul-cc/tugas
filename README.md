@@ -1,6 +1,6 @@
 # ☕ Coffee Shop Web
 
-Halo! 👋  
+Haiii! 👋  
 Ini adalah website **Toko Kopi Sederhana** yang saya buat menggunakan **HTML, CSS, dan JavaScript**.  
 Projek ini saya buat sebagai latihan / tugas agar lebih paham dasar-dasar web.
 
